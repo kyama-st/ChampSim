@@ -41,7 +41,7 @@ uint32_t CACHE::lru_victim(uint32_t cpu, uint64_t instr_id, uint32_t set, const 
                 MYDP ( if (warmup_complete[cpu] && NAME == "LLC") {
                 cout << "[" << NAME << "] " << __func__ << " instr_id: " << instr_id << " replace set: " << set << " way: " << way;
                 cout << hex << " address: " << (full_addr>>LOG2_BLOCK_SIZE) << " victim address: " << block[set][way].address << " data: " << block[set][way].data;
-                cout << dec << " lru: " << block[set][way].lru << " dirty:" <<endl; });
+                cout << dec << " lru: " << block[set][way].lru << " dirty:" << block[set][way].dirty <<endl; });
 
                 break;
             }
