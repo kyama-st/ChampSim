@@ -20,7 +20,8 @@
 #include <iomanip>
 
 // USEFUL MACROS
-//#define DEBUG_PRINT
+// #define DEBUG_PRINT
+#define MYDEBUG_PRINT
 #define SANITY_CHECK
 #define LLC_BYPASS
 #define DRC_BYPASS
@@ -31,6 +32,13 @@
 #else
 #define DP(x)
 #endif
+
+#ifdef MYDEBUG_PRINT
+#define MYDP(x) x
+#else
+#define DP(x)
+#endif
+
 
 // CPU
 #define NUM_CPUS 1
