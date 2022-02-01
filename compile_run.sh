@@ -1,5 +1,4 @@
 #!/bin/bash
-cd ../
 ##build
 ./build_champsim.sh bimodal no no no no myrepl 1
 echo "finish build"

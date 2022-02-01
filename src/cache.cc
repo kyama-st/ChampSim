@@ -22,7 +22,12 @@ void CACHE::handle_fill()
 
         // find victim
         uint32_t set = get_set(MSHR.entry[mshr_index].address), way;
+        uint32_t dirty_victim = 0; 
+        
         if (cache_type == IS_LLC) {
+                MYDP ( if (warmup_complete[cpu] ) {
+                cout << "[" << NAME << "] " << __func__ << endl; });
+
             way = llc_find_victim(fill_cpu, MSHR.entry[mshr_index].instr_id, set, block[set], MSHR.entry[mshr_index].ip, MSHR.entry[mshr_index].full_addr, MSHR.entry[mshr_index].type);
         }
         else
@@ -399,6 +404,8 @@ void CACHE::handle_writeback()
                 // find victim
                 uint32_t set = get_set(WQ.entry[index].address), way;
                 if (cache_type == IS_LLC) {
+                    MYDP ( if (warmup_complete[cpu] ) {
+                    cout << "[" << NAME << "] " << __func__ << endl; });
                     way = llc_find_victim(writeback_cpu, WQ.entry[index].instr_id, set, block[set], WQ.entry[index].ip, WQ.entry[index].full_addr, WQ.entry[index].type);
                 }
                 else
